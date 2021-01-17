@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
 module.exports= {
     entry: {
@@ -19,6 +20,10 @@ module.exports= {
                 use: 'babel-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader:'file-loader'
+            },
         ],
     },
     devServer: {
@@ -27,6 +32,7 @@ module.exports= {
     },
     plugins: [
         new HtmlWebpackPlugin({template: 'src/index.html'}),
+        new HtmlWebpackInlineSVGPlugin()
     ],
 };
 

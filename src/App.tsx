@@ -1,6 +1,6 @@
 import React from "react";
-import { TestComponent } from "./TestComponent";
+import Footer from "./components/molecules/Footer";
 
 export default function App() {
-  return <TestComponent />;
+  return <Footer />;
 }
