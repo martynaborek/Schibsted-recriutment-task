@@ -11,7 +11,6 @@ const Header = () => {
             <a href="https://www.schibsted.pl/" target="_blank">
                 <LogoStyled src={logo} alt="schibsted"/>
             </a>
-            <div>Toogle theme</div>
         </HeaderStyled>
     );
 };
