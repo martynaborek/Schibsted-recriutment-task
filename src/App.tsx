@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "./components/molecules/Footer";
+import Home from "./pages/Home"
 
 export default function App() {
-  return <Footer />;
+  return <Home/>;
 }
