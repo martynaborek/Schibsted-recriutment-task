@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react"
+// styles
 import { FooterStyled } from "./FooterStyled"
 
-const Footer = () => {
-    return (
-        <FooterStyled>
-            <div>
-                <p>Front-end recruitment task</p>
-                <p>Created by Martyna Borek</p>
-            </div>
-        </FooterStyled>
-    );
-};
+const Footer = () => (
+  <FooterStyled>
+    <div className="content">
+      <p className="title">Front-end recruitment task</p>
+      <p className="author">&copy; Martyna Borek</p>
+    </div>
+  </FooterStyled>
+)
 
-export default Footer;
+export default Footer
