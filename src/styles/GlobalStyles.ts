@@ -53,7 +53,6 @@ const GlobalStyles = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
     > img {
       width: 40%;
       height: auto;
@@ -61,7 +60,7 @@ const GlobalStyles = createGlobalStyle`
       flex-shrink: 0;
       max-height: 15rem;
       @media (min-width: 768px) {
-        width: 30%;
+        width: 60%;
       }
     }
   }

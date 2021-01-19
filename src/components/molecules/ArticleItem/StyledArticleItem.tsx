@@ -24,6 +24,7 @@ const ArticleItemStyled = styled.div`
     max-height: 15rem;
     @media (min-width: 768px) {
       width: 30%;
+      max-height: 20rem;
     }
   }
 
@@ -34,7 +35,9 @@ const ArticleItemStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    @media (min-width: 768px) {
+      width: 65%;
+    }
     > .info {
       display: flex;
       flex-direction: column;
