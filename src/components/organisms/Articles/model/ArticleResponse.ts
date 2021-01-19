@@ -1,5 +1,10 @@
-import {Article} from "./Article";
-
 export interface ArticleResponse {
-    articles: Array<Article>;
+    articles: Array<{
+        id: number;
+        date: string;
+        image: string;
+        category: string;
+        title: string;
+        preamble: string;
+    }>;
 }
