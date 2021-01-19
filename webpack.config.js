@@ -22,7 +22,10 @@ module.exports= {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                loader:'file-loader'
+                loader:'file-loader',
+                options: {
+                    name: 'images/[name].[ext]'
+                }
             },
             {
                 test: /\.css$/i,

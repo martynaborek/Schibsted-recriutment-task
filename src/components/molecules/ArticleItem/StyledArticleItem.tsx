@@ -9,35 +9,79 @@ const ArticleItemStyled = styled.div`
   background-color: #fff;
   margin-bottom: 1rem;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   overflow: hidden;
+  @media (min-width: 768px) {
+    padding: 1.5rem 0 1.5rem 1rem;
+  }
+
   > .photo {
     width: 40%;
     height: auto;
     border-radius: 3px;
-    flex-shrink: 1;
+    flex-shrink: 0;
+    max-height: 15rem;
+    @media (min-width: 768px) {
+      width: 30%;
+    }
   }
+
   > .articleData {
+    width: 55%;
     margin-left: 1rem;
     height: 100%;
-    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     > .info {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      @media (min-width: 768px) {
+        flex-direction: row;
+        margin-bottom: 1rem;
+      }
+
       > .title {
         font-size: 1rem;
         font-weight: 700;
-        line-height: 1;
+        line-height: 1.3;
         margin-bottom: 1rem;
+        @media (min-width: 500px) {
+          font-size: 1.5rem;
+          margin-bottom: .5rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 2rem;
+          line-height: 1.2;
+          width: 75%;
+        }
+      }
+      > .date {
+        font-size: 1rem;
+        color: #808080;
+        font-weight: 700;
+        line-height: 1;
+        @media (min-width: 500px) {
+          font-size: 1.2rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 1.3rem;
+        }
       }
     }
+
     > .description {
-      color: #000;
-      font-weight: 300;
-      font-size: 0.625rem;
       display: none;
+      @media (min-width: 768px) {
+        display: flex;
+        color: #000;
+        font-weight: 300;
+        font-size: 1.4rem;
+        line-height: 1.4;
+      }
     }
   }
 `

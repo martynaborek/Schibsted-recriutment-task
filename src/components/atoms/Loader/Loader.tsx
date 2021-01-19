@@ -1,12 +1,12 @@
 import React from "react"
-import { StyledLoader } from "./StyledLoader"
+import { StyledLoader, StyledLoaderWrapper } from "./StyledLoader"
 
 interface LoaderInterface {
-  fillContainer: boolean
+  fillContainer?: boolean
 }
 const Loader = ({ fillContainer }: LoaderInterface) => (
-  <StyledLoader fillContainer={fillContainer}>
-    <svg viewBox="0 0 50 50">
+  <StyledLoaderWrapper fillContainer={fillContainer}>
+    <StyledLoader viewBox="0 0 50 50">
       <circle
         className="path"
         cx="25"
@@ -15,8 +15,8 @@ const Loader = ({ fillContainer }: LoaderInterface) => (
         fill="none"
         strokeWidth="2"
       />
-    </svg>
-  </StyledLoader>
+    </StyledLoader>
+  </StyledLoaderWrapper>
 )
 
 export default Loader

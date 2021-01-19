@@ -1,57 +1,73 @@
-import {API} from "../../../../constants";
-import {ArticleCategory} from "../../../../constants/ArticleCategory";
-import {Article} from "../model/Article";
-import {ArticleResponse} from "../model/ArticleResponse";
-import {convertNorwayMonthToNumber} from "../../../../helpers/NorwayMonth";
+// constants
+import {API, ArticleCategory} from "../../../../constants"
+// helpers
+import {convertNorwayMonthToNumber} from "../../../../helpers/NorwayMonth"
+// types
+import {Article} from "../model/Article"
+import {ArticleResponse} from "../model/ArticleResponse"
 
 interface ArticleCache {
-    timestamp: number;
-    articles: Array<Article>;
+    timestamp: number
+    articles: Array<Article>
 }
 
-const cache: { [key: string]: ArticleCache } = {};
+const cache: { [key: string]: ArticleCache } = {}
 
 function checkCache(category: ArticleCategory): Array<Article> | null {
-    const findArticleCategory = cache[category];
+    const findArticleCategory = cache[category]
     if (findArticleCategory) {
-        const timestamp = Date.now();
+        const timestamp = Date.now()
         if (Math.abs(findArticleCategory.timestamp - timestamp) < 30 * 1000) {
             return findArticleCategory.articles
         }
     }
 
-    return null;
+    return null
 }
 
 function addToCache(category: ArticleCategory, articles: Array<Article>) {
     cache[category] = {
         timestamp: Date.now(),
-        articles
+        articles,
     }
-    return articles;
+    return articles
 }
 
-// Convert Date from BE: '2. februar 2019' to javascript date
 export function convertNorwegianDate(date: string): Date {
-    const [day, month, year] = date.split(' ');
-    return new Date(parseInt(year), convertNorwayMonthToNumber(month), parseInt(day));
+    const [day, month, year] = date.split(" ")
+    return new Date(
+        parseInt(year),
+        convertNorwayMonthToNumber(month),
+        parseInt(day)
+    )
 }
 
-export async function loadArticles(category: ArticleCategory): Promise<Array<Article> | Error> {
-    const cachedArticles = checkCache(category);
+export function loadArticles(
+    category: ArticleCategory
+): Promise<Array<Article>> {
+    const cachedArticles = checkCache(category)
     if (cachedArticles) {
-        return cachedArticles;
+        return new Promise((resolve) => {
+            resolve(cachedArticles);
+        })
     }
 
-    const response = await fetch(API.articles[category]);
-    if (response.ok) {
-        const {articles} = await response.json() as ArticleResponse;
-        const articlesWithConvertedDate: Array<Article> = articles.map((article) => ({
-            ...article,
-            convertedDate: convertNorwegianDate(article.date)
-        }))
-        addToCache(category, articlesWithConvertedDate)
-        return articlesWithConvertedDate;
-    }
-    return new Error('Internal server error');
+    return fetch(API.articles[category])
+        .then((response) => {
+            if(response.ok) {
+                return response.json()
+            }
+            throw new Error('Something went wrong.');
+        })
+        .then((response) => {
+            const {articles} = response as ArticleResponse
+            const articlesWithConvertedDate: Array<Article> = articles.map(
+                (article) => ({
+                    ...article,
+                    convertedDate: convertNorwegianDate(article.date),
+                })
+            )
+            addToCache(category, articlesWithConvertedDate)
+            return articlesWithConvertedDate
+        })
 }

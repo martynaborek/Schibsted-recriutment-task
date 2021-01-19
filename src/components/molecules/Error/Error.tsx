@@ -5,7 +5,7 @@ import ButtonPrimary from "../../atoms/Buttons/ButtonPrimary"
 import { ErrorStyled } from "./ErrorStyled"
 
 interface ErrorProps {
-  fillContainer: boolean
+  fillContainer?: boolean
 }
 
 const Error = ({ fillContainer }: ErrorProps) => {

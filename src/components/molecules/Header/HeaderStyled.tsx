@@ -18,6 +18,10 @@ const HeaderStyled = styled.header`
 const LogoStyled = styled.img`
   width: 8rem;
   height: 1.5rem;
+  @media (min-width: 768px) {
+    width: 20rem;
+    height: 3.5rem;
+  }
 `
 
-export { HeaderStyled, LogoStyled }
+export {HeaderStyled, LogoStyled}

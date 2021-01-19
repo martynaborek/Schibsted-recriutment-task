@@ -15,10 +15,15 @@ const ButtonPrimaryStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   > .content {
     display: flex;
     justify-items: center;
     align-items: center;
+  }
+  @media (min-width: 768px) {
+    width: 13rem;
+    height: 3.5rem;
   }
 `
 
@@ -36,6 +41,11 @@ const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 768px) {
+    width: 13rem;
+    height: 3.5rem;
+    font-size: 1.3rem;
+  }
   > .content {
     display: flex;
     justify-items: center;

@@ -14,15 +14,24 @@ const FooterStyled = styled.footer`
   line-height: 1;
   font-size: 1rem;
   padding: 2rem 1rem;
+  @media (min-width: 768px) {
+    padding: 2rem 2rem;
+  }
   .content {
     line-height: 1.3;
     > .title {
       font-weight: 300;
       font-size: 7px;
+      @media (min-width: 768px) {
+        font-size: 1.1rem;
+      }
     }
     > .author {
       font-weight: 600;
       font-size: 10px;
+      @media (min-width: 768px) {
+        font-size: 1.4rem;
+      }
     }
   }
 `

@@ -41,19 +41,29 @@ const GlobalStyles = createGlobalStyle`
     margin-top: 1px;
     width: .8rem;
     height: .8rem;
+    @media (min-width: 768px) {
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-left: .5rem;
+      margin-top: 4px;
+    }
   }
+  
   .img-placeholder {
-    width: 40%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 1;
-    > img{
-      height: 3rem;
-      width: 4rem;
+    width: 30%;
+    > img {
+      width: 40%;
+      height: auto;
+      border-radius: 3px;
+      flex-shrink: 0;
+      max-height: 15rem;
+      @media (min-width: 768px) {
+        width: 30%;
+      }
     }
-    
   }
 `;
 
