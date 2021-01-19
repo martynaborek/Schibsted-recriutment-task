@@ -77,7 +77,8 @@ export const reducer = (state: ArticlesState = initialArticlesState, action: { t
             return {
                 ...state,
                 loading: false,
-                error: payload
+                error: payload,
+                values: [],
             }
         }
         case  ArticlesActionType.TOGGLE_SORT_BY: {

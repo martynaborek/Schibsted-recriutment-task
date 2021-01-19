@@ -1,8 +1,8 @@
-import {API} from "../../../constants";
-import {ArticleCategory} from "../../../constants/ArticleCategory";
-import {Article} from "./model/Article";
-import {ArticleResponse} from "./model/ArticleResponse";
-import {convertNorwayMonthToNumber} from "../../../helpers/NorwayMonth";
+import {API} from "../../../../constants";
+import {ArticleCategory} from "../../../../constants/ArticleCategory";
+import {Article} from "../model/Article";
+import {ArticleResponse} from "../model/ArticleResponse";
+import {convertNorwayMonthToNumber} from "../../../../helpers/NorwayMonth";
 
 interface ArticleCache {
     timestamp: number;
@@ -32,7 +32,7 @@ function addToCache(category: ArticleCategory, articles: Array<Article>) {
 }
 
 // Convert Date from BE: '2. februar 2019' to javascript date
-function convertNorwegianDate(date: string): Date {
+export function convertNorwegianDate(date: string): Date {
     const [day, month, year] = date.split(' ');
     return new Date(parseInt(year), convertNorwayMonthToNumber(month), parseInt(day));
 }
@@ -44,7 +44,6 @@ export async function loadArticles(category: ArticleCategory): Promise<Array<Art
     }
 
     const response = await fetch(API.articles[category]);
-    console.log(response);
     if (response.ok) {
         const {articles} = await response.json() as ArticleResponse;
         const articlesWithConvertedDate: Array<Article> = articles.map((article) => ({
