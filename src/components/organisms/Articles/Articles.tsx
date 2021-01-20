@@ -35,7 +35,6 @@ const Articles = () => {
       const promises = state.categories.map((category: ArticleCategory) => loadArticles(category))
       Promise.all(promises)
           .then((results) => {
-            console.log(results);
             const payload: any = results.reduce((acc: Array<any>, value: any) => [...acc, ...value], [])
             dispatch({ type: ArticlesActionType.FETCH_ARTICLE_SUCCESS, payload })
           })
